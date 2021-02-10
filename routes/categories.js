@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Category = require("../models/category");
+const Product = require("../models/product");
 const catchAsync = require("../utils/catchAsync");
 
 // Categories page
@@ -19,7 +20,19 @@ router.get(
         return 0;
       }
     });
-    res.render("categories", { categories });
+    res.render("categories/index", { categories });
+  })
+);
+
+// Single category page
+router.get(
+  "/:id",
+  catchAsync(async (req, res, next) => {
+    const category = await Category.findById(req.params.id);
+    
+    // Get products with that category
+    const products = await Product.find({ category: category._id });
+    res.render("categories/show", { category, products });
   })
 );
 

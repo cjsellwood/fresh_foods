@@ -124,6 +124,9 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+strong {
+  font-weight: 700;
+}
 
 .boilerplate-header {
   background-color: black;
@@ -198,7 +201,6 @@ a.logo {
 }
 
 .product-grid-container h2 {
-  /* font-size: 1.7rem; */
   margin-top: 30px;
 }
 
@@ -238,4 +240,22 @@ a.logo {
   -moz-border-radius: 10px;
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
+}
+
+.show-container {
+  font-size: 1.3rem;
+  line-height: 1.5;
+  margin: 0 auto;
+  max-width: max(80%, 300px)
+}
+
+.show-container div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.show-container a {
+  display: inline-block;
+  margin: 20px 0;
+  color: rgb(59, 156, 59);
 }

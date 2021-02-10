@@ -8,7 +8,16 @@ router.get(
   "/",
   catchAsync(async (req, res, next) => {
     const products = await Product.find({}).populate("category");
-    res.render("products", { products });
+    res.render("products/index", { products });
+  })
+);
+
+// Single product page
+router.get(
+  "/:id",
+  catchAsync(async (req, res, next) => {
+    const product = await Product.findById(req.params.id).populate("category");
+    res.render("products/show", { product });
   })
 );
 
