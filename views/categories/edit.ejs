@@ -1,0 +1,26 @@
+<% layout("layouts/boilerplate") %>
+<h1>Edit Category</h1>
+<div>
+  <form class="form" method="POST" action="/categories/<%= category._id %>/edit?_method=PUT">
+    <div>
+      <label for="name">Name</label>
+      <input
+        id="name"
+        name="category[name]"
+        type="text"
+        placeholder="Enter Name"
+        value="<%= category.name %>"
+      />
+    </div>
+    <div>
+      <label>Description</label>
+      <textarea
+        id="description"
+        name="category[description]"
+        placeholder="Enter Description"
+        rows="5"
+      ><%= category.description %></textarea>
+    </div>
+    <button class="button" type="submit">Save</button>
+  </form>
+</div>

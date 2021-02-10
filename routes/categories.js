@@ -41,6 +41,30 @@ router.post(
   })
 );
 
+// Get edit category form
+router.get(
+  "/:id/edit",
+  catchAsync(async (req, res, next) => {
+    const category = await Category.findById(req.params.id);
+    res.render("categories/edit", { category });
+  })
+);
+
+// Put edited values into database
+router.put(
+  "/:id/edit",
+  catchAsync(async (req, res, next) => {
+    const editedCategory = { ...req.body.category, id: req.params.id };
+
+    // Update category
+    const category = await Category.findByIdAndUpdate(
+      req.params.id,
+      editedCategory
+    );
+    res.redirect(`/categories/${req.params.id}`);
+  })
+);
+
 // Get category delete confirmation page
 router.get(
   "/:id/delete",

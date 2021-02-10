@@ -12,6 +12,9 @@
   </p>
   <p><%= product.description %></p>
 </div>
-<form method="POST" action="/products/<%= product._id %>/delete?_method=DELETE">
-  <button class="button bg-red" type="submit">Delete</button>
-</form>
+<div class="button-container">
+  <a class="link-button bg-blue" href="/products/<%= product._id %>/edit">Edit</a>
+  <form method="POST" action="/products/<%= product._id %>/delete?_method=DELETE">
+    <button class="button bg-red" type="submit">Delete</button>
+  </form>
+</div>

@@ -17,6 +17,7 @@ router.get(
 router.get(
   "/new",
   catchAsync(async (req, res, next) => {
+    // Fetch categories for dropdown select
     const categories = await Category.find({});
     res.render("products/new", { categories });
   })
@@ -34,12 +35,37 @@ router.post(
   })
 );
 
+// Get product edit form
+router.get(
+  "/:id/edit",
+  catchAsync(async (req, res, next) => {
+    // Fetch categories for dropdown select
+    const categories = await Category.find({});
+
+    const product = await Product.findById(req.params.id);
+    res.render("products/edit", { product, categories });
+  })
+);
+
+// Patch product with data from form
+router.patch(
+  "/:id/edit",
+  catchAsync(async (req, res, next) => {
+    const editedProduct = {
+      ...req.body.product,
+      _id: req.params.id,
+    };
+    await Product.findByIdAndUpdate(editedProduct._id, editedProduct)
+    res.redirect(`/products/${editedProduct._id}`);
+  })
+);
+
 // Delete product
 router.delete(
   "/:id/delete",
   catchAsync(async (req, res, next) => {
     await Product.findByIdAndDelete(req.params.id);
-    res.redirect("/products")
+    res.redirect("/products");
   })
 );
 

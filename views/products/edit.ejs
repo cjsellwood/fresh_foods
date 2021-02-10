@@ -1,0 +1,65 @@
+<% layout("layouts/boilerplate") %>
+<h1>Edit Product</h1>
+<div>
+  <form
+    class="form"
+    method="POST"
+    action="/products/<%= product._id %>/edit?_method=PATCH"
+  >
+    <div>
+      <label for="name">Name</label>
+      <input
+        id="name"
+        name="product[name]"
+        type="text"
+        placeholder="Enter Name"
+        value="<%= product.name %>"
+      />
+    </div>
+    <div>
+      <label>Description</label>
+      <textarea
+        id="description"
+        name="product[description]"
+        placeholder="Enter Description"
+        rows="5"
+      >
+<%= product.description %></textarea
+      >
+    </div>
+    <div>
+      <label for="price">Price</label>
+      <input
+        id="price"
+        name="product[price]"
+        type="number"
+        placeholder="0.00"
+        min="0"
+        step="0.01"
+        value="<%= product.price %>"
+      />
+    </div>
+    <div>
+      <label for="quantity">Quantity</label>
+      <input
+        id="quantity"
+        name="product[quantity]"
+        type="number"
+        min="0"
+        step="1"
+        placeholder="0"
+        value="<%= product.quantity %>"
+      />
+    </div>
+    <div>
+      <label for="category">Category</label>
+      <select id="category" name="product[category]">
+        <% for (category of categories) {%>
+        <option value="<%= category._id %>" <%= category._id.toString() === product.category.toString() ? "selected" : "" %>><%= category.name %></option>
+        <%}%>
+      </select>
+    </div>
+
+    <button class="button" type="submit">Save</button>
+  </form>
+</div>
