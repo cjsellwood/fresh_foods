@@ -37,7 +37,34 @@ router.post(
       ...req.body.category,
     });
     await category.save();
-    res.redirect("/categories")
+    res.redirect("/categories");
+  })
+);
+
+// Get category delete confirmation page
+router.get(
+  "/:id/delete",
+  catchAsync(async (req, res, next) => {
+    const category = await Category.findById(req.params.id);
+
+    // Get products with that category
+    const products = await Product.find({ category: category._id });
+    res.render("categories/delete", { category, products });
+  })
+);
+
+// Delete category from database
+router.delete(
+  "/:id/delete",
+  catchAsync(async (req, res, next) => {
+    // Find and delete category
+    const category = await Category.findByIdAndDelete(req.params.id);
+    console.log(category);
+
+    // Delete all products that have that category
+    const products = await Product.deleteMany({ category: category._id });
+    console.log(products);
+    res.redirect("/categories");
   })
 );
 

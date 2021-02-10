@@ -78,6 +78,7 @@ summary,
 time,
 mark,
 audio,
+button,
 video {
   margin: 0;
   padding: 0;
@@ -263,7 +264,7 @@ a.logo {
   background-color: rgb(31, 117, 31);
   display: block;
   padding: 10px 20px;
-  margin: 10px auto;
+  margin: 20px auto;
   text-decoration: none;
   width:fit-content;
   color: white;
@@ -290,8 +291,9 @@ a.logo {
   background-color: rgb(31, 117, 31);
   display: block;
   padding: 10px 20px;
-  margin: 10px 0;
+  margin: 20px auto;
   cursor: pointer;
+  font-size: 1.2rem;
 }
 
 .form {
@@ -315,5 +317,20 @@ a.logo {
 .form input, .form textarea, .form select {
   font-size: 1.2rem;
   padding: 5px;
-  font-family: Numito, sans-serif;
+  font-family: "Numito", sans-serif;
+}
+
+.bg-red {
+  background-color: rgb(189, 0, 0);
+}
+
+.bg-red:hover {
+  background-color: rgb(221, 0, 0);
+}
+
+.centered-title {
+  display: block;
+  margin: 10px auto;
+  width: fit-content;
+  font-size: 1.3rem;
 }
