@@ -26,13 +26,20 @@ router.get(
 router.post(
   "/new",
   catchAsync(async (req, res, next) => {
-    console.log(req.body);
     const newProduct = new Product({
-      ...req.body.product
-    })
-    console.log(newProduct)
+      ...req.body.product,
+    });
     await newProduct.save();
-    res.redirect(`/products/${newProduct._id}`)
+    res.redirect(`/products/${newProduct._id}`);
+  })
+);
+
+// Delete product
+router.delete(
+  "/:id/delete",
+  catchAsync(async (req, res, next) => {
+    await Product.findByIdAndDelete(req.params.id);
+    res.redirect("/products")
   })
 );
 

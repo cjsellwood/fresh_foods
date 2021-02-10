@@ -12,3 +12,6 @@
   </p>
   <p><%= product.description %></p>
 </div>
+<form method="POST" action="/products/<%= product._id %>/delete?_method=DELETE">
+  <button type="submit">Delete</button>
+</form>
