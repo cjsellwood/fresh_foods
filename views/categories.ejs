@@ -1,0 +1,9 @@
+<% layout("layouts/boilerplate") %>
+<h1>Categories</h1>
+<div class="category-grid-container">
+  <% for (category of categories) {%>
+  <a href="<%= category.url %>">
+    <p><%= category.name %></p>
+  </a>
+  <% } %>
+</div>
