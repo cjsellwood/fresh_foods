@@ -224,3 +224,18 @@ a.logo {
 .category-grid-container a:hover {
   background-color: rgb(245, 245, 245);
 }
+
+.error-msg {
+  background-color: rgb(255, 176, 193);
+  display: block;
+  margin: 0 auto;
+  margin-top: 40px;
+  max-width: 700px;
+  padding: 40px;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}

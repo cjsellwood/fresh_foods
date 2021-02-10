@@ -4,8 +4,7 @@ const ejsMate = require("ejs-mate");
 const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 
-const Product = require("./models/product");
-const Category = require("./models/category")
+const ExpressError = require("./utils/ExpressError");
 
 // Connect mongodb
 mongoose.connect("mongodb://localhost:27017/fresh_foods", {
@@ -40,21 +39,31 @@ app.use(methodOverride("_method"));
 // For serving static files
 app.use(express.static(path.join(__dirname, "public")));
 
+// import routers
+const productRouter = require("./routes/products");
+const categoriesRouter = require("./routes/categories");
+
+// Routers
+app.use("/products", productRouter);
+app.use("/categories", categoriesRouter);
+
 // Home page
 app.get("/", (req, res) => {
   res.render("index");
 });
 
-// Products page
-app.get("/products", async (req, res) => {
-  const products = await Product.find({}).populate("category");
-  res.render("products", { products });
+// Handle not found error
+app.all("*", (req, res, next) => {
+  next(new ExpressError("Page not found", 404));
 });
 
-// Categories page
-app.get("/categories", async (req, res) => {
-  const categories = await Category.find({});
-  res.render("categories", { categories });
+// Handle errors
+app.use((err, req, res, next) => {
+  const { statusCode = 500, message = "Something went wrong" } = err;
+  if (!err.msg) {
+    err.msg = "Oh no, there was an error";
+  }
+  res.status(statusCode).render("error", { err });
 });
 
 // Create server to listen on
