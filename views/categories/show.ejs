@@ -2,9 +2,9 @@
 <h1><%= category.name %></h1>
 <div class="show-container">
   <p><%= category.description %></p>
-
 </div>
-<br>
+<br />
+<% if (products.length) { %>
 <div class="product-grid-container">
   <% for (product of products) {%>
   <a href="<%= product.url %>">
@@ -12,4 +12,8 @@
     <h2>$<%= product.price.toFixed(2) %></h2>
   </a>
   <% } %>
+</div>
+<% } else {%>
+  <h2 style="margin: 10px auto; width: fit-content; font-size: 1.3rem">There are no products with this category yet</h2>
+<% } %>
 </div>

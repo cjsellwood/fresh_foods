@@ -1,0 +1,21 @@
+<% layout("layouts/boilerplate") %>
+<h1>New Category</h1>
+<div>
+  <form class="form" method="POST" action="/categories/new">
+    <div>
+      <label for="name">Name</label>
+      <input id="name" name="category[name]" type="text" placeholder="Enter Name" />
+    </div>
+    <div>
+      <label>Description</label>
+      <textarea
+        id="description"
+        name="category[description]"
+        placeholder="Enter Description"
+        rows="5"
+      ></textarea>
+      
+    </div>
+    <button class="button" type="submit">Save</button>
+  </form>
+</div>

@@ -24,12 +24,29 @@ router.get(
   })
 );
 
+// Add new category page
+router.get("/new", (req, res, next) => {
+  res.render("categories/new");
+});
+
+// Submit new category from form
+router.post(
+  "/new",
+  catchAsync(async (req, res, next) => {
+    const category = new Category({
+      ...req.body.category,
+    });
+    await category.save();
+    res.redirect("/categories")
+  })
+);
+
 // Single category page
 router.get(
   "/:id",
   catchAsync(async (req, res, next) => {
     const category = await Category.findById(req.params.id);
-    
+
     // Get products with that category
     const products = await Product.find({ category: category._id });
     res.render("categories/show", { category, products });
