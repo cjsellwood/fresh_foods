@@ -356,3 +356,27 @@ button:hover {
   width: 100px;
   text-align: center;
 }
+
+.was-validated {
+}
+
+.was-validated input:valid,
+.was-validated textarea:valid,
+.was-validated select:valid {
+  outline: 2px solid rgba(0, 194, 0, 0.541);
+}
+
+.was-validated .validate-msg {
+  content: "Good";
+  color: black;
+  background-color: #fff;
+  margin: 10px 0;
+  color: rgb(80, 80, 80);
+  font-size: 1.2rem;
+}
+
+.was-validated input:invalid,
+.was-validated textarea:invalid,
+.was-validated select:invalid {
+  outline: 2px solid rgba(255, 0, 0, 0.644);
+}
