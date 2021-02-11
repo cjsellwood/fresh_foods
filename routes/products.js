@@ -3,6 +3,20 @@ const router = express.Router();
 const Product = require("../models/product");
 const Category = require("../models/category");
 const catchAsync = require("../utils/catchAsync");
+const ExpressError = require("../utils/ExpressError");
+const { productSchema } = require("../joi");
+
+// Middleware for validating with Joi
+const validateProduct = (req, res, next) => {
+  // Validates request body based on joi schema
+  const {error} = productSchema.validate(req.body);
+  if (error) {
+    const msg = error.details.map((el ) => el.message).join(",");
+    throw new ExpressError(msg, 400);
+  } else {
+    next();
+  }
+};
 
 // Products page
 router.get(
@@ -23,9 +37,11 @@ router.get(
   })
 );
 
+
 // Submit new product
 router.post(
   "/new",
+  validateProduct,
   catchAsync(async (req, res, next) => {
     const newProduct = new Product({
       ...req.body.product,
@@ -50,12 +66,13 @@ router.get(
 // Patch product with data from form
 router.patch(
   "/:id/edit",
+  validateProduct,
   catchAsync(async (req, res, next) => {
     const editedProduct = {
       ...req.body.product,
       _id: req.params.id,
     };
-    await Product.findByIdAndUpdate(editedProduct._id, editedProduct)
+    await Product.findByIdAndUpdate(editedProduct._id, editedProduct);
     res.redirect(`/products/${editedProduct._id}`);
   })
 );

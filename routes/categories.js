@@ -3,6 +3,20 @@ const router = express.Router();
 const Category = require("../models/category");
 const Product = require("../models/product");
 const catchAsync = require("../utils/catchAsync");
+const ExpressError = require("../utils/ExpressError");
+const { categorySchema } = require("../joi");
+
+// Middleware for validating with Joi
+const validateCategory = (req, res, next) => {
+  // Validates request body based on joi schema;
+  const { error } = categorySchema.validate(req.body);
+  if (error) {
+    const msg = error.details.map((el) => el.message).join(",");
+    throw new ExpressError(msg, 400);
+  } else {
+    next();
+  }
+};
 
 // Categories page
 router.get(
@@ -32,6 +46,7 @@ router.get("/new", (req, res, next) => {
 // Submit new category from form
 router.post(
   "/new",
+  validateCategory,
   catchAsync(async (req, res, next) => {
     const category = new Category({
       ...req.body.category,
@@ -53,6 +68,7 @@ router.get(
 // Put edited values into database
 router.put(
   "/:id/edit",
+  validateCategory,
   catchAsync(async (req, res, next) => {
     const editedCategory = { ...req.body.category, id: req.params.id };
 
