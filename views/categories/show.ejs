@@ -8,6 +8,9 @@
 <div class="product-grid-container">
   <% for (product of products) {%>
   <a href="<%= product.url %>">
+    <div class="product-image-wrapper">
+      <img class="product-image" src="/images/<%= product.image %>" alt="<%= product.name %>"/>
+    </div>
     <h3><%= product.name %></h3>
     <h2>$<%= product.price.toFixed(2) %></h2>
   </a>

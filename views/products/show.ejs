@@ -1,11 +1,18 @@
 <% layout("layouts/boilerplate") %>
 <h1><%= product.name %></h1>
+<div class="product-image-wrapper large">
+  <img
+    class="product-image"
+    src="/images/<%= product.image %>"
+    alt="<%= product.name %>"
+  />
+</div>
 <div class="show-container">
   <div>
     <p><strong>Price:</strong> $<%= product.price.toFixed(2) %></p>
     <p><strong>Stock: </strong><%= product.quantity %></p>
   </div>
-  
+
   <p>
     <strong>Category: </strong
     ><a href="<%= product.category.url %>"><%= product.category.name %></a>
@@ -13,8 +20,13 @@
   <p><%= product.description %></p>
 </div>
 <div class="button-container">
-  <a class="link-button bg-blue" href="/products/<%= product._id %>/edit">Edit</a>
-  <form method="POST" action="/products/<%= product._id %>/delete?_method=DELETE">
+  <a class="link-button bg-blue" href="/products/<%= product._id %>/edit"
+    >Edit</a
+  >
+  <form
+    method="POST"
+    action="/products/<%= product._id %>/delete?_method=DELETE"
+  >
     <button class="button bg-red" type="submit">Delete</button>
   </form>
 </div>

@@ -3,6 +3,7 @@ const path = require("path");
 const ejsMate = require("ejs-mate");
 const mongoose = require("mongoose");
 const methodOverride = require("method-override");
+const multer = require("multer")
 
 const ExpressError = require("./utils/ExpressError");
 

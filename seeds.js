@@ -48,6 +48,7 @@ const products = [
       "Fresh apple Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt fugit blanditiis aspernatur sequi doloribus, quasi iusto. Fuga illum, cum hic, a laboriosam quaerat nihil qui officiis quas quia ea quo!",
     quantity: 5,
     category: "Fruit",
+    image: "apple.webp"
   },
   {
     name: "Orange",
@@ -56,6 +57,7 @@ const products = [
       "Juicy orange Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt fugit blanditiis aspernatur sequi doloribus, quasi iusto. Fuga illum, cum hic, a laboriosam quaerat nihil qui officiis quas quia ea quo!",
     quantity: 7,
     category: "Fruit",
+    image: "orange.webp"
   },
   {
     name: "Milk",
@@ -64,6 +66,7 @@ const products = [
       "Delicious milk Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt fugit blanditiis aspernatur sequi doloribus, quasi iusto. Fuga illum, cum hic, a laboriosam quaerat nihil qui officiis quas quia ea quo!",
     quantity: 34,
     category: "Dairy",
+    image: "milk.webp"
   },
   {
     name: "Chocolate",
@@ -72,6 +75,7 @@ const products = [
       "Smooth chocolate Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt fugit blanditiis aspernatur sequi doloribus, quasi iusto. Fuga illum, cum hic, a laboriosam quaerat nihil qui officiis quas quia ea quo!",
     quantity: 9,
     category: "Confectionary",
+    image: "chocolate.webp"
   },
   {
     name: "Potato",
@@ -80,6 +84,7 @@ const products = [
       "Fine potato Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt fugit blanditiis aspernatur sequi doloribus, quasi iusto. Fuga illum, cum hic, a laboriosam quaerat nihil qui officiis quas quia ea quo!",
     quantity: 73,
     category: "Vegetable",
+    image: "potato.webp"
   },
 ];
 

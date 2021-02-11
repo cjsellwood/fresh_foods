@@ -1,7 +1,13 @@
 <% layout("layouts/boilerplate") %>
 <h1>New Product</h1>
 <div>
-  <form class="form validated-form" method="POST" action="/products/new" novalidate>
+  <form
+    class="form validated-form"
+    method="POST"
+    action="/products/new"
+    enctype="multipart/form-data"
+    novalidate
+  >
     <div>
       <label for="name">Name</label>
       <input
@@ -57,6 +63,16 @@
         <option value="<%= category._id %>"><%= category.name %></option>
         <%}%>
       </select>
+      <div class="validate-msg"></div>
+    </div>
+    <div>
+      <label for="image">Image</label>
+      <input
+        id="image"
+        type="file"
+        name="image"
+        placeholder="Optional"
+      />
       <div class="validate-msg"></div>
     </div>
 

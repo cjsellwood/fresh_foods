@@ -26,6 +26,9 @@ const productSchema = Schema({
     ref: Category,
     required: true,
   },
+  image: {
+    type: String,
+  }
 });
 
 // Create url as virtual property
