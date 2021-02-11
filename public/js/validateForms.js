@@ -37,3 +37,8 @@ const validate = () => {
     }
   }
 };
+
+const saveButton = document.getElementById("saveButton");
+if (saveButton) {
+  saveButton.addEventListener("click", validate);
+}

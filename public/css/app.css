@@ -134,7 +134,7 @@ strong {
   position: sticky;
   top: 0;
   left: 0;
-  width: 100%
+  width: 100%;
 }
 
 .nav-list {
@@ -168,7 +168,6 @@ body {
   margin: 0 auto;
   max-width: 1300px;
   padding: 20px;
-
 }
 
 .content-wrapper > h1 {
@@ -250,13 +249,13 @@ body {
 }
 
 .product-image-wrapper.large {
-  width: 400px;
-  height: 400px;
+  width: min(400px, 90vw);
+  height: min(400px, 90vw);
 }
 
 .product-image-wrapper.large .product-image {
   width: 100%;
-  max-width: 400px;
+  max-width: max(400px, 90vw);
   max-height: 400px;
 }
 
@@ -390,9 +389,6 @@ button:hover {
   text-align: center;
 }
 
-.was-validated {
-}
-
 .was-validated input:valid,
 .was-validated textarea:valid,
 .was-validated select:valid {
@@ -402,7 +398,6 @@ button:hover {
 .was-validated .validate-msg {
   content: "Good";
   color: black;
-  background-color: #fff;
   margin: 10px 0;
   color: rgb(80, 80, 80);
   font-size: 1.2rem;
